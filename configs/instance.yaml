@@ -1,0 +1,42 @@
+dataset: INSTANCE
+station_slots: 180
+counts:
+  earthquake_events: 9855
+  earthquake_waveforms: 105075
+  train_events: 6577
+  train_waveforms: 75645
+  validation_events: 1381
+  validation_waveforms: 12531
+  test_events: 1897
+  test_waveforms: 16899
+sampling_rate_hz: 100
+metadata:
+  p_arrival_key: trace_P_arrival_sample
+  event_id_key: source_id
+  event_id_prefix_length: null
+  category_key: source_type
+  earthquake_value: earthquake
+  noise_value: noise
+split:
+  train_years: [2005, 2006, 2007, 2008, 2009, 2010, 2011, 2012, 2016, 2017]
+  validation_years: [2014, 2019]
+  test_years: [2013, 2015, 2018, 2020]
+filters:
+  instrument: EH
+  p_label_confidence_min: 50
+  detected_events_per_waveform: 1
+  p_annotations_per_waveform: 1
+  min_p_stations_per_event: 5
+interfaces:
+  PhaseNet: {feature_dim: 32, temporal_length: 12, input_length: 3001}
+  EQTransformer: {feature_dim: 16, temporal_length: 24, input_length: 3000}
+  ViT: {feature_dim: 40, temporal_length: 75, input_length: 3000}
+random_placement_validation_selected:
+  single_station:
+    PhaseNet: {threshold_type: max, threshold_probability: 0.01}
+    EQTransformer: {task_weights_P_S_detection: [0.4, 0.55, 0.05], threshold_type: max, threshold_probability: 0.01}
+    ViT: {task_weights_P_S_detection: [0.85, 0.10, 0.05], threshold_type: max, threshold_probability: 0.01}
+  multi_station:
+    PhaseNet: {threshold_type: max, threshold_probability: 0.01}
+    EQTransformer: {task_weights_P_S_detection: [0.4, 0.55, 0.05], threshold_type: max, threshold_probability: 0.02}
+    ViT: {task_weights_P_S_detection: [0.75, 0.20, 0.05], threshold_type: max, threshold_probability: 0.01}

@@ -1,0 +1,17 @@
+seed: 42
+sampling_rate_hz: 100
+attention:
+  num_heads: 4
+  dropout: 0.1
+distance:
+  earth_radius_km: 6371.0
+  loss_weight: 2.0e-7
+training:
+  optimizer: Adam
+  initial_lr: 1.0e-3
+  early_stopping_patience: 7
+metrics:
+  p_tolerance_seconds: 0.5
+eqtransformer:
+  lr_milestones: [21, 41, 61, 91]
+  lr_factors: [1.0e-1, 1.0e-2, 1.0e-3, 0.5e-3]

@@ -1,0 +1,22 @@
+dataset: CWASN
+protocol: controlled_p_arrival_position
+positions: [750, 1500, 2000, 2750, 2900]
+validation_selected:
+  PhaseNet:
+    750:  {single: {type: max, probability: 0.07}, multi: {type: continue, probability: 0.02, trigger_length: 40}}
+    1500: {single: {type: max, probability: 0.10}, multi: {type: continue, probability: 0.05, trigger_length: 25}}
+    2000: {single: {type: max, probability: 0.07}, multi: {type: continue, probability: 0.03, trigger_length: 40}}
+    2750: {single: {type: max, probability: 0.03}, multi: {type: max, probability: 0.02}}
+    2900: {single: {type: max, probability: 0.01}, multi: {type: max, probability: 0.02}}
+  EQTransformer:
+    750:  {single: {type: max, probability: 0.15}, multi: {type: max, probability: 0.10}}
+    1500: {single: {type: continue, probability: 0.20, trigger_length: 25}, multi: {type: max, probability: 0.10}}
+    2000: {single: {type: continue, probability: 0.15, trigger_length: 30}, multi: {type: max, probability: 0.08}}
+    2750: {single: {type: max, probability: 0.09}, multi: {type: max, probability: 0.07}}
+    2900: {single: {type: max, probability: 0.03}, multi: {type: max, probability: 0.04}}
+  ViT:
+    750:  {single: {type: continue, probability: 0.20, trigger_length: 20}, multi: {type: continue, probability: 0.04, trigger_length: 15}}
+    1500: {single: {type: max, probability: 0.01}, multi: {type: continue, probability: 0.01, trigger_length: 40}}
+    2000: {single: {type: continue, probability: 0.15, trigger_length: 30}, multi: {type: continue, probability: 0.01, trigger_length: 40}}
+    2750: {single: {type: max, probability: 0.01}, multi: {type: continue, probability: 0.01, trigger_length: 35}}
+    2900: {single: {type: max, probability: 0.01}, multi: {type: max, probability: 0.02}}

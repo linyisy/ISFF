@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "isff-seismic"
+version = "0.6.1"
+description = "Inter-Station Feature Fusion for seismic P-wave picking"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+requires-python = ">=3.10"
+authors = [
+  {name = "Yi-Syuan Lin"},
+  {name = "Kuan-Yu Chen", email = "kychen@mail.ntust.edu.tw"},
+]
+dependencies = [
+  "numpy>=1.23,<3",
+  "PyYAML>=6.0",
+  "scipy>=1.9,<2",
+  "torch>=1.13",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest>=7",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-ra"

@@ -1,0 +1,13 @@
+cff-version: 1.2.0
+message: "If you use this software, please cite the accompanying manuscript."
+title: "A Backbone-Compatible Inter-Station Feature Fusion Framework for Seismic P-Wave Picking"
+type: software
+authors:
+  - family-names: Lin
+    given-names: Yi-Syuan
+  - family-names: Chen
+    given-names: Kuan-Yu
+    orcid: "https://orcid.org/0000-0001-9656-7551"
+repository-code: "https://github.com/linyisy/ISFF"
+version: "0.6.1"
+license: Apache-2.0
